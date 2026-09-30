@@ -1,12 +1,14 @@
 # A Little Place for You
 
-A private, romantic single-page website.
+A romantic single-page website.
 
 ## Run
 Open `index.html` in a browser.
 
-## Publish
-Upload both `index.html` and `1000068036.jpg` to GitHub Pages, Netlify, or another static hosting service.
+## Deploy
+GitHub Actions deploys the site to GitHub Pages whenever changes are pushed to `main`.
+After the first successful deployment, visit:
+https://ankitkumaranalytics.github.io/Friend-for-ever/
 
 ## Important
-Because the page contains a person's name and a personal photo/note, keep it private or ask for permission before publishing it publicly.
+The deployed page is publicly accessible and includes a person's name and a personal photo/note.
