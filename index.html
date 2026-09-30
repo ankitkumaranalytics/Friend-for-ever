@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Place for You ♡</title>
+  <meta name="description" content="A small, private page made with care.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fff8fb;
+      color: #38252e;
+      overflow-x: hidden;
+    }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 32px 20px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,180,205,.35), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,221,190,.35), transparent 30%),
+        linear-gradient(135deg, #fff8fb, #ffeef5 55%, #fffaf1);
+    }
+    .hero::before, .hero::after {
+      content: "♡";
+      position: absolute;
+      color: rgba(221, 73, 119, .16);
+      font-size: 180px;
+      animation: float 7s ease-in-out infinite;
+    }
+    .hero::before { left: -35px; top: 8%; }
+    .hero::after { right: -35px; bottom: 8%; animation-delay: -3s; }
+    .card {
+      width: min(900px, 100%);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 48px 24px;
+    }
+    .tiny { letter-spacing: 4px; text-transform: uppercase; font: 600 12px Arial, sans-serif; color:#b04b70; }
+    h1 {
+      font-size: clamp(52px, 12vw, 110px);
+      line-height: .95;
+      margin: 18px 0;
+      color: #7f284c;
+      font-weight: 500;
+    }
+    .subtitle {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: clamp(18px, 3vw, 24px);
+      line-height: 1.65;
+      color: #65414d;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 28px;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 24px;
+      background: #8e3155;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      font: 600 14px Arial, sans-serif;
+      box-shadow: 0 12px 28px rgba(142,49,85,.2);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 16px 35px rgba(142,49,85,.28); }
+    section { padding: 90px 20px; }
+    .wrap { width: min(1000px, 100%); margin: auto; }
+    .section-title { text-align:center; margin-bottom: 45px; }
+    .section-title h2 { font-size: clamp(34px, 6vw, 54px); font-weight: 500; color:#7f284c; }
+    .section-title p { margin-top: 12px; color:#795966; font: 15px/1.7 Arial,sans-serif; }
+    .letter {
+      background: rgba(255,255,255,.78);
+      border: 1px solid #f3d4df;
+      border-radius: 28px;
+      padding: clamp(28px, 6vw, 58px);
+      box-shadow: 0 25px 70px rgba(93, 38, 58, .09);
+      position: relative;
+    }
+    .letter::before {
+      content: "♡";
+      position: absolute;
+      top: 18px; right: 25px;
+      font-size: 28px; color:#d95c86;
+    }
+    .letter p { font-size: 19px; line-height: 1.9; margin: 0 0 18px; }
+    .signature { text-align:right; color:#9a3d60; font-style:italic; font-size:20px; margin-top:28px; }
+    .timeline { position:relative; max-width:760px; margin:auto; }
+    .timeline::before {
+      content:""; position:absolute; left:20px; top:0; bottom:0; width:2px; background:#efb8cb;
+    }
+    .event { position:relative; padding:0 0 42px 58px; }
+    .dot {
+      position:absolute; left:10px; top:4px; width:22px; height:22px;
+      border-radius:50%; background:#a73d64; border:5px solid #fff0f5;
+      box-shadow:0 0 0 2px #eab1c5;
+    }
+    .date { font:700 12px Arial,sans-serif; letter-spacing:1.5px; color:#b04b70; text-transform:uppercase; }
+    .event h3 { font-size:25px; margin:7px 0; color:#603243; }
+    .event p { font:15px/1.7 Arial,sans-serif; color:#705562; }
+    .memory {
+      display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;
+    }
+    .photo {
+      background:#fff; padding:12px 12px 42px; transform:rotate(-2deg);
+      box-shadow:0 18px 45px rgba(75,35,50,.14); border-radius:3px;
+    }
+    .photo img { display:block; width:100%; height:auto; max-height:650px; object-fit:cover; }
+    .caption { text-align:center; font-style:italic; margin-top:14px; color:#704554; }
+    .promise {
+      background:linear-gradient(135deg,#7f284c,#a8466c);
+      color:white; border-radius:30px; padding:55px 30px; text-align:center;
+      box-shadow:0 25px 70px rgba(127,40,76,.25);
+    }
+    .promise h2 { font-size:clamp(34px,7vw,62px); font-weight:500; margin-bottom:18px; }
+    .promise p { max-width:700px; margin:auto; font-size:18px; line-height:1.8; color:#fff1f6; }
+    .final {
+      text-align:center; padding:100px 20px 120px;
+      background:#fff;
+    }
+    .final h2 { font-size:clamp(38px,8vw,72px); font-weight:500; color:#7f284c; }
+    .final p { max-width:650px; margin:20px auto; font-size:18px; line-height:1.8; color:#6d515c; }
+    .heart-btn {
+      margin-top:20px; border:1px solid #e2a6bb; background:#fff8fb; color:#8e3155;
+      border-radius:999px; padding:14px 24px; cursor:pointer; font:600 14px Arial,sans-serif;
+    }
+    footer { padding:28px 20px; text-align:center; background:#fff8fb; color:#98727f; font:12px Arial,sans-serif; }
+    .petal {
+      position:fixed; top:-20px; z-index:10; pointer-events:none; opacity:.8;
+      animation:fall linear forwards;
+    }
+    @keyframes fall { to { transform:translateY(110vh) rotate(540deg); opacity:0; } }
+    @keyframes float { 50% { transform:translateY(-20px) rotate(5deg); } }
+    @media(max-width:720px) {
+      .memory { grid-template-columns:1fr; }
+      .photo { max-width:520px; margin:auto; }
+      section { padding:70px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="card">
+      <div class="tiny">A small corner of the internet</div>
+      <h1>For Aashi ♡</h1>
+      <p class="subtitle">
+        I don't know what the future has written for us.<br>
+        I only know that meeting you made some ordinary days feel special.
+      </p>
+      <a class="btn" href="#letter">Read my little note ↓</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="letter">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>A little honesty</h2>
+          <p>No pressure. No expectations. Just something I wanted you to know.</p>
+        </div>
+        <div class="letter">
+          <p>Dear Aashi,</p>
+          <p>
+            You are one of those people whose kindness feels natural. Your caring,
+            innocent and loving nature has a way of making me feel happy, even on
+            completely normal days.
+          </p>
+          <p>
+            I don't know if you feel the same way about me, and I don't want this
+            page to put you in a difficult position. I just wanted to be honest:
+            I like you, I respect you, and when I imagine my future, I can imagine
+            someone like you beside me.
+          </p>
+          <p>
+            If someday our feelings meet at the same place, I would be grateful.
+            And if they don't, I will still be thankful that I got to know someone
+            as special as you.
+          </p>
+          <div class="signature">— Someone who genuinely cares ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#fffdfd;">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Our little timeline</h2>
+          <p>A few moments I quietly remember.</p>
+        </div>
+        <div class="timeline">
+          <div class="event">
+            <span class="dot"></span>
+            <div class="date">September 1, 2026</div>
+            <h3>A starting point</h3>
+            <p>A simple connection through LinkedIn that became a small part of my story.</p>
+          </div>
+          <div class="event">
+            <span class="dot"></span>
+            <div class="date">September 26, 2026</div>
+            <h3>Friendship started to feel special</h3>
+            <p>Instagram, conversations, a big promise and a few words that stayed in my mind.</p>
+          </div>
+          <div class="event">
+            <span class="dot"></span>
+            <div class="date">Today</div>
+            <h3>Still grateful</h3>
+            <p>Not trying to rush anything. Just appreciating the person you are.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap memory">
+        <div class="photo">
+          <img src="1000068036.jpg" alt="A handwritten memory page">
+          <div class="caption">A little page full of memories and good wishes.</div>
+        </div>
+        <div>
+          <div class="section-title" style="text-align:left; margin-bottom:20px;">
+            <h2>Some things are worth keeping.</h2>
+          </div>
+          <p style="font:18px/1.9 Arial,sans-serif; color:#705562;">
+            Not every beautiful thing needs a grand story. Sometimes it is just
+            a conversation, a laugh, a kind message, or the feeling that someone's
+            presence made your day a little lighter.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="promise">
+          <h2>No pressure. Just honesty.</h2>
+          <p>
+            You never have to answer this page, choose anything, or feel obligated.
+            I made it because I wanted to express my feelings respectfully.
+            Whatever you feel, I hope you always stay happy and true to yourself.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <h2>Maybe, someday… ♡</h2>
+      <p>
+        If life gives us the same direction, I would love to walk it with you.
+        Until then, I will simply be happy that our paths crossed.
+      </p>
+      <button class="heart-btn" onclick="sendHearts()">Tap for a little happiness ♡</button>
+    </section>
+  </main>
+
+  <footer>
+    Made with sincerity, not pressure. ♡
+  </footer>
+
+  <script>
+    function sendHearts() {
+      const symbols = ["♡","♥","✦","✿"];
+      for (let i = 0; i < 24; i++) {
+        const el = document.createElement("div");
+        el.className = "petal";
+        el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+        el.style.left = Math.random()*100 + "vw";
+        el.style.fontSize = (14 + Math.random()*18) + "px";
+        el.style.animationDuration = (3 + Math.random()*3) + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 6500);
+      }
+    }
+  </script>
+</body>
+</html>
