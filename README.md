@@ -1,14 +1,21 @@
 # A Little Place for You
 
-A romantic single-page website.
+A responsive single-page diary and digital letter, built with HTML, CSS and vanilla JavaScript.
 
-## Run
-Open `index.html` in a browser.
+## Run locally
+Open `index.html` in a browser. The page uses Google Fonts when a network connection is available and falls back to system fonts otherwise.
+
+## Interactions
+- The opening note reveals the page after the visitor chooses to enter.
+- Sweet selections and the final question only update the page; no response is sent or stored.
+- The handwritten memory image opens in an accessible lightbox.
+- Song links open the supplied Raatiyan video on YouTube in a new tab; playback never starts automatically.
+- Scroll effects respect the visitor's reduced-motion preference.
 
 ## Deploy
 GitHub Actions deploys the site to GitHub Pages whenever changes are pushed to `main`.
-After the first successful deployment, visit:
+Visit:
 https://ankitkumaranalytics.github.io/Friend-for-ever/
 
 ## Important
-The deployed page is publicly accessible and includes a person's name and a personal photo/note.
+The deployed page and this public repository are publicly accessible. The page includes a person's name, personal note and handwritten photo.
