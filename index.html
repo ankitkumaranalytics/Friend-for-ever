@@ -189,6 +189,13 @@
           </article>
           <article class="timeline-entry" data-reveal>
             <span class="timeline-marker" aria-hidden="true">♡</span>
+            <p class="handwriting timeline-date">03 - 10 - 2026 · 2:25 AM</p>
+            <p class="eyebrow">Memory kept close</p>
+            <h3>We knew, and we loved</h3>
+            <p>On this quiet early morning, we realized something simple and true: we know each other, and we love each other.</p>
+          </article>
+          <article class="timeline-entry" data-reveal>
+            <span class="timeline-marker" aria-hidden="true">♡</span>
             <p class="handwriting timeline-date">Today</p>
             <p class="eyebrow">Still unfolding</p>
             <h3>Still grateful</h3>
@@ -198,28 +205,121 @@
       </div>
     </section>
 
+    <section class="section road-map-section" id="journey-road">
+      <div class="section-wrap">
+        <div class="section-header" data-reveal>
+          <p class="eyebrow">From the first step to now</p>
+          <h2 class="section-heading">Our <em>road</em> so far</h2>
+          <p class="section-subtitle">A quiet path, a few meaningful moments, and a story that still keeps moving.</p>
+        </div>
+
+        <div class="road-map" data-reveal>
+          <div class="road-track" aria-hidden="true"></div>
+          <div class="road-travel" aria-hidden="true"><span>♡</span></div>
+
+          <article class="road-stop">
+            <div class="road-card">
+              <span class="road-step">01</span>
+              <p class="handwriting road-date">September 1, 2026</p>
+              <h3>First connection</h3>
+              <p>One simple LinkedIn connection became the beginning of something unexpected.</p>
+            </div>
+          </article>
+
+          <article class="road-stop">
+            <div class="road-card">
+              <span class="road-step">02</span>
+              <p class="handwriting road-date">September 26, 2026</p>
+              <h3>Something started to feel familiar</h3>
+              <p>Conversations became warm, easy and memorable. The bond started feeling real.</p>
+            </div>
+          </article>
+
+          <article class="road-stop">
+            <div class="road-card">
+              <span class="road-step">03</span>
+              <p class="handwriting road-date">03 - 10 - 2026</p>
+              <h3>2:25 AM truth</h3>
+              <p>In the quiet of the night, we realized the simple truth: we know each other, and we love each other.</p>
+            </div>
+          </article>
+
+          <article class="road-stop">
+            <div class="road-card">
+              <span class="road-step">04</span>
+              <p class="handwriting road-date">Now</p>
+              <h3>Still unfolding</h3>
+              <p>We are still learning, still appreciating, still letting this story grow with honesty and care.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="memory-section" id="memory">
       <div class="memory-desk" aria-hidden="true"></div>
       <div class="memory-inner">
         <div class="memory-copy" data-reveal>
-          <p class="eyebrow">Ink, paper, a small keepsake</p>
-          <h2 class="section-heading">Some things are worth <em>writing down.</em></h2>
-          <p>Because sometimes a handwritten page says what a screen can't.</p>
-          <p class="handwriting">A little piece of this story, held on paper. ♡</p>
+          <p class="eyebrow">A photo she shared</p>
+          <h2 class="section-heading">A simple photo, <em>kept close.</em></h2>
+          <p>She sent me this picture, and I wanted to give it a little place on this page.</p>
+          <p class="handwriting">Just a photo she shared with me. ♡</p>
         </div>
-        <button class="photo-frame" id="openMemory" type="button" aria-label="Open the handwritten memory page">
+        <button class="photo-frame" id="openMemory" type="button" aria-label="Open the photo she shared">
           <span class="photo-tape" aria-hidden="true"></span>
-          <img src="1000068036.jpg" alt="A handwritten memory page, photographed on paper" loading="lazy" decoding="async">
-          <span class="photo-caption">a page to keep close</span>
+          <img src="photos/IMG_20261003_005819_200.jpg" alt="A photo she shared with me" loading="lazy" decoding="async">
+          <span class="photo-caption">a photo she shared</span>
         </button>
       </div>
     </section>
 
-    <dialog class="lightbox" id="memoryLightbox" aria-label="Handwritten memory page">
+    <dialog class="lightbox" id="memoryLightbox" aria-label="Photo she shared">
       <button class="lightbox-close" id="closeMemory" type="button" aria-label="Close image">×</button>
-      <img src="1000068036.jpg" alt="A handwritten memory page, enlarged">
-      <p>Press Escape or tap outside the page to close</p>
+      <div class="lightbox-media" id="lightboxMedia">
+        <img src="photos/IMG_20261003_005819_200.jpg" alt="A photo she shared with me, enlarged">
+      </div>
+      <p class="lightbox-note">Press Escape or tap outside the page to close</p>
     </dialog>
+
+    <section class="section photo-gallery-section" id="photo-gallery">
+      <div class="section-wrap">
+        <div class="section-header" data-reveal>
+          <p class="eyebrow">A little memory chest</p>
+          <h2 class="section-heading">Our <em>photos & video</em></h2>
+          <p class="section-subtitle">A place for the photos and video you shared with me.</p>
+        </div>
+
+        <div class="photo-upload-row" data-reveal>
+          <label class="photo-upload-button" for="memoryUpload">
+            <input id="memoryUpload" type="file" accept="image/*" multiple>
+            <span>Add memory photos</span>
+          </label>
+          <p class="photo-folder-note">Saved photos live in <strong>photos/</strong> on this project folder.</p>
+        </div>
+
+        <div class="gallery-grid" id="memoryGalleryGrid" data-reveal>
+          <figure class="gallery-card gallery-card-video gallery-card-featured">
+            <video controls playsinline preload="metadata" poster="photos/IMG_20261003_005724_175.jpg" aria-label="Play our video memory">
+              <source src="photos/VID_20260926_105029_270.mp4" type="video/mp4">
+              Your browser does not support MP4 video playback.
+            </video>
+            <figcaption>our video memory · press play to watch</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG_20261003_005724_175.jpg" alt="A memory photo from our story">
+            <figcaption>little moments</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG_20260928_003549_724.jpg" alt="A memory photo from our story">
+            <figcaption>when it felt right</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG_20260928_003431_731.jpg" alt="A memory photo from our story">
+            <figcaption>us, in a quiet time</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
     <section class="section letter-section" id="letter">
       <div class="section-header" data-reveal>
@@ -231,6 +331,7 @@
         <span class="letter-stamp" aria-hidden="true">♡</span>
         <p>Dear Aashi,</p>
         <p>I don't know exactly when it happened, but somewhere between conversations, little moments and the way you treat me, you became someone I genuinely care about.</p>
+        <p>On 03 - 10 - 2026, at 2:25 AM, we both felt the quiet truth that we know each other and we love each other. That memory stays close to me.</p>
         <p>I like your innocence.<br>I like the way you care.<br>I like the way you respect me.<br>I like the little playful side of you.</p>
         <p>And I really like how, even when I'm not in the best mood, talking to you can somehow make me feel happy.</p>
         <p>I don't know if you feel the same way. And that's okay.</p>

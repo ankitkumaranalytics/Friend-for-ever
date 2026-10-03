@@ -108,12 +108,42 @@ surpriseButton.addEventListener("click", () => {
 });
 
 const memoryLightbox = document.querySelector("#memoryLightbox");
+const lightboxMedia = document.querySelector("#lightboxMedia");
 const openMemory = document.querySelector("#openMemory");
 const closeMemory = document.querySelector("#closeMemory");
+const memoryUpload = document.querySelector("#memoryUpload");
+const memoryGalleryGrid = document.querySelector("#memoryGalleryGrid");
 
-openMemory.addEventListener("click", () => {
+function openMemoryLightbox({ type = "image", src, alt = "Memory media", poster = "" }) {
+  const mediaWrapper = lightboxMedia;
+  mediaWrapper.innerHTML = "";
+
+  if (type === "video") {
+    const video = document.createElement("video");
+    video.src = src;
+    video.controls = true;
+    video.playsInline = true;
+    video.autoplay = false;
+    video.preload = "metadata";
+    if (poster) video.poster = poster;
+    mediaWrapper.append(video);
+  } else {
+    const image = document.createElement("img");
+    image.src = src;
+    image.alt = alt;
+    mediaWrapper.append(image);
+  }
+
   memoryLightbox.showModal();
   closeMemory.focus();
+}
+
+openMemory.addEventListener("click", () => {
+  openMemoryLightbox({
+    type: "image",
+    src: "photos/IMG_20261003_005819_200.jpg",
+    alt: "A photo she shared with me"
+  });
 });
 
 closeMemory.addEventListener("click", () => memoryLightbox.close());
@@ -124,9 +154,40 @@ memoryLightbox.addEventListener("cancel", (event) => {
 memoryLightbox.addEventListener("keydown", (event) => {
   if (event.key === "Escape") memoryLightbox.close();
 });
-memoryLightbox.addEventListener("close", () => openMemory.focus());
+memoryLightbox.addEventListener("close", () => {
+  const currentFocus = document.activeElement;
+  if (currentFocus && currentFocus !== document.body) {
+    openMemory.focus();
+  }
+});
 memoryLightbox.addEventListener("click", (event) => {
   if (event.target === memoryLightbox) memoryLightbox.close();
+});
+
+memoryGalleryGrid.querySelectorAll(".gallery-card").forEach((card) => {
+  card.addEventListener("click", (event) => {
+    const video = card.querySelector("video");
+    if (video) {
+      if (event.target === video || video.contains(event.target)) return;
+
+      openMemoryLightbox({
+        type: "video",
+        src: video.querySelector("source")?.src || video.src,
+        poster: video.poster,
+        alt: "Our video memory"
+      });
+      return;
+    }
+
+    const image = card.querySelector("img");
+    if (image) {
+      openMemoryLightbox({
+        type: "image",
+        src: image.src,
+        alt: image.alt || "Memory image"
+      });
+    }
+  });
 });
 
 const answerCopy = {
@@ -151,6 +212,31 @@ const secretHeart = document.querySelector("#secretHeart");
 const closeSecret = document.querySelector("#closeSecret");
 let secretClicks = 0;
 let secretReturnFocus = null;
+
+function addGalleryImage(file) {
+  if (!file || !file.type.startsWith("image/")) return;
+
+  const objectUrl = URL.createObjectURL(file);
+  const figure = document.createElement("figure");
+  figure.className = "gallery-card";
+
+  const img = document.createElement("img");
+  img.src = objectUrl;
+  img.alt = file.name;
+  img.loading = "lazy";
+
+  const caption = document.createElement("figcaption");
+  caption.textContent = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]+/g, " ");
+
+  figure.append(img, caption);
+  memoryGalleryGrid.prepend(figure);
+}
+
+memoryUpload.addEventListener("change", (event) => {
+  const files = Array.from(event.target.files || []);
+  files.forEach(addGalleryImage);
+  event.target.value = "";
+});
 
 function closeSecretNote() {
   secretOverlay.hidden = true;
