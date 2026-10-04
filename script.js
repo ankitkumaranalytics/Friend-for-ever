@@ -191,9 +191,9 @@ memoryGalleryGrid.querySelectorAll(".gallery-card").forEach((card) => {
 });
 
 const answerCopy = {
-  "of-course": "That made me smile. ♡",
-  "lets-see": "That's enough for me.\nNo pressure. Just something beautiful to look forward to.",
-  maybe: "Then I'll keep the memories, the smile and the hope. ♡"
+  "of-course": "I'm glad. I'll value our friendship. ♡",
+  "lets-see": "One day at a time is just fine. No pressure.",
+  maybe: "I understand. Take the time you need."
 };
 const answerResponse = document.querySelector("#answerResponse");
 

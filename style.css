@@ -503,10 +503,11 @@ main[aria-hidden="true"] { filter: blur(3px); }
   transform: translateY(20px);
   animation: roadStepIn .7s ease forwards;
 }
-.road-stop:nth-child(2) { animation-delay: .12s; }
-.road-stop:nth-child(3) { animation-delay: .24s; }
-.road-stop:nth-child(4) { animation-delay: .36s; }
-.road-stop:nth-child(5) { animation-delay: .48s; }
+.road-stop:nth-of-type(1) { animation-delay: .12s; }
+.road-stop:nth-of-type(2) { animation-delay: .24s; }
+.road-stop:nth-of-type(3) { animation-delay: .36s; }
+.road-stop:nth-of-type(4) { animation-delay: .48s; }
+.road-stop:nth-of-type(5) { animation-delay: .60s; }
 .road-stop:nth-child(odd) .road-card { grid-column: 2; }
 .road-stop:nth-child(even) .road-card { grid-column: 1; justify-self: end; text-align: right; }
 .road-stop::before {
