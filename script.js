@@ -6,6 +6,23 @@ const enterButton = document.querySelector("#enterButton");
 const skipLink = document.querySelector(".skip-link");
 const musicFloat = document.querySelector(".music-float");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const heartStage = document.querySelector(".heart-stage");
+const heartObject = document.querySelector(".heart-object");
+
+if (heartStage && heartObject && !reducedMotion.matches && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  heartStage.addEventListener("pointermove", (event) => {
+    const bounds = heartStage.getBoundingClientRect();
+    const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const vertical = (event.clientY - bounds.top) / bounds.height - 0.5;
+    heartObject.style.setProperty("--tilt-x", `${vertical * -14}deg`);
+    heartObject.style.setProperty("--tilt-y", `${horizontal * 18 - 12}deg`);
+  });
+
+  heartStage.addEventListener("pointerleave", () => {
+    heartObject.style.removeProperty("--tilt-x");
+    heartObject.style.removeProperty("--tilt-y");
+  });
+}
 
 enterButton.focus();
 opening.addEventListener("keydown", (event) => {
@@ -191,9 +208,9 @@ memoryGalleryGrid.querySelectorAll(".gallery-card").forEach((card) => {
 });
 
 const answerCopy = {
-  "of-course": "I'm glad. I'll value our friendship. ♡",
-  "lets-see": "One day at a time is just fine. No pressure.",
-  maybe: "I understand. Take the time you need."
+  "of-course": "Yes—together, one step at a time. ♡",
+  "lets-see": "One day at a time. We'll keep moving forward together.",
+  maybe: "That's okay. We'll keep talking and take things as they come."
 };
 const answerResponse = document.querySelector("#answerResponse");
 
