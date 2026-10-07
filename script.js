@@ -181,30 +181,31 @@ memoryLightbox.addEventListener("click", (event) => {
   if (event.target === memoryLightbox) memoryLightbox.close();
 });
 
-memoryGalleryGrid.querySelectorAll(".gallery-card").forEach((card) => {
-  card.addEventListener("click", (event) => {
-    const video = card.querySelector("video");
-    if (video) {
-      if (event.target === video || video.contains(event.target)) return;
+memoryGalleryGrid.addEventListener("click", (event) => {
+  const card = event.target.closest(".gallery-card");
+  if (!card) return;
 
-      openMemoryLightbox({
-        type: "video",
-        src: video.querySelector("source")?.src || video.src,
-        poster: video.poster,
-        alt: "Our video memory"
-      });
-      return;
-    }
+  const video = card.querySelector("video");
+  if (video) {
+    if (event.target === video || video.contains(event.target)) return;
 
-    const image = card.querySelector("img");
-    if (image) {
-      openMemoryLightbox({
-        type: "image",
-        src: image.src,
-        alt: image.alt || "Memory image"
-      });
-    }
-  });
+    openMemoryLightbox({
+      type: "video",
+      src: video.querySelector("source")?.src || video.src,
+      poster: video.poster,
+      alt: "Our video memory"
+    });
+    return;
+  }
+
+  const image = card.querySelector("img");
+  if (image) {
+    openMemoryLightbox({
+      type: "image",
+      src: image.src,
+      alt: image.alt || "Memory image"
+    });
+  }
 });
 
 const answerCopy = {
@@ -230,28 +231,40 @@ const closeSecret = document.querySelector("#closeSecret");
 let secretClicks = 0;
 let secretReturnFocus = null;
 
-function addGalleryImage(file) {
-  if (!file || !file.type.startsWith("image/")) return;
+function addGalleryMedia(file) {
+  if (!file || (!file.type.startsWith("image/") && !file.type.startsWith("video/"))) return;
 
   const objectUrl = URL.createObjectURL(file);
   const figure = document.createElement("figure");
   figure.className = "gallery-card";
 
-  const img = document.createElement("img");
-  img.src = objectUrl;
-  img.alt = file.name;
-  img.loading = "lazy";
+  if (file.type.startsWith("video/")) {
+    figure.classList.add("gallery-card-video");
+    const video = document.createElement("video");
+    video.src = objectUrl;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.setAttribute("aria-label", `Play ${file.name}`);
+    figure.append(video);
+  } else {
+    const img = document.createElement("img");
+    img.src = objectUrl;
+    img.alt = file.name;
+    img.loading = "lazy";
+    img.decoding = "async";
+    figure.append(img);
+  }
 
   const caption = document.createElement("figcaption");
   caption.textContent = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]+/g, " ");
-
-  figure.append(img, caption);
-  memoryGalleryGrid.prepend(figure);
+  figure.append(caption);
+  memoryGalleryGrid.append(figure);
 }
 
 memoryUpload.addEventListener("change", (event) => {
   const files = Array.from(event.target.files || []);
-  files.forEach(addGalleryImage);
+  files.forEach(addGalleryMedia);
   event.target.value = "";
 });
 

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fbf6ef">
-  <meta name="description" content="A little 3D love story made for Aashi, with all my heart.">
-  <title>A Little Place for You ♡</title>
+  <meta name="description" content="A little 3D love story made for Aashittu, with all my heart.">
+  <title>ANKANYA ♡</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -28,11 +28,16 @@
 
   <main id="main-content" aria-hidden="true" inert>
     <nav class="site-nav" aria-label="Main navigation">
-      <a class="wordmark" href="#home" aria-label="A Little Place for You home">a little place <span>♡</span></a>
-      <a class="nav-link" href="#letter">A note, for you <span aria-hidden="true">↗</span></a>
+      <a class="wordmark" href="#home" aria-label="Anaya + Ankit = ANKANYA home">ANKANYA <span>♡</span></a>
+      <div class="nav-links" aria-label="Explore the story">
+        <a class="nav-link" href="#our-story">Our story</a>
+        <a class="nav-link" href="#photo-gallery">Memories</a>
+        <a class="nav-link nav-link-letter" href="#letter">A note, for you <span aria-hidden="true">↗</span></a>
+      </div>
     </nav>
 
     <header class="hero" id="home">
+      <p class="hero-dedication" lang="hi">“तुम मेरी ज़िंदगी का वो खूबसूरत हिस्सा हो, जिसे मैं हर जन्म में फिर से अपना बनाना चाहूँगा। ❤️”</p>
       <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
       <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
       <span class="hero-spark hero-spark-one" aria-hidden="true">✦</span>
@@ -40,7 +45,7 @@
       <span class="hero-heart" aria-hidden="true">♡</span>
       <div class="hero-content">
         <p class="eyebrow" data-reveal>Made of memories · made for you</p>
-        <h1 data-reveal>For you,<br><em>Aashi</em> <span class="rose-mark">♡</span></h1>
+        <h1 data-reveal>For you,<br><em>Aashittu</em> <span class="rose-mark">♡</span></h1>
         <p class="hero-copy" data-reveal>Somewhere between hello and “I love you,”<br>you became my favorite part of the story.</p>
         <p class="hero-small" data-reveal>For the day you said yes—and every day still to come.</p>
         <p class="handwriting hero-hand" data-reveal>Our story, in little moments ♡</p>
@@ -386,15 +391,15 @@
         <div class="section-header" data-reveal>
           <p class="eyebrow">A little memory chest</p>
           <h2 class="section-heading">Our <em>photos & video</em></h2>
-          <p class="section-subtitle">A place for the photos and video you shared with me.</p>
+          <p class="section-subtitle">All the photos and videos you shared with me, gathered in one little place.</p>
         </div>
 
         <div class="photo-upload-row" data-reveal>
           <label class="photo-upload-button" for="memoryUpload">
-            <input id="memoryUpload" type="file" accept="image/*" multiple>
-            <span>Add memory photos</span>
+            <input id="memoryUpload" type="file" accept="image/*,video/*" multiple>
+            <span>Add photos or videos</span>
           </label>
-          <p class="photo-folder-note">Saved photos live in <strong>photos/</strong> on this project folder.</p>
+          <p class="photo-folder-note">Project memories live in <strong>photos/</strong>. New selections appear as temporary previews.</p>
         </div>
 
         <div class="gallery-grid" id="memoryGalleryGrid" data-reveal>
@@ -405,17 +410,55 @@
             </video>
             <figcaption>our video memory · press play to watch</figcaption>
           </figure>
+          <figure class="gallery-card gallery-card-video">
+            <video controls playsinline preload="metadata" poster="photos/IMG_20261007_123831_357.jpg" aria-label="Play another video memory">
+              <source src="photos/VID_20261007_001847_467.mp4" type="video/mp4">
+              Your browser does not support MP4 video playback.
+            </video>
+            <figcaption>another little video memory</figcaption>
+          </figure>
+          <figure class="gallery-card gallery-card-video">
+            <video controls playsinline preload="metadata" poster="photos/IMG-20261007-WA0008.jpg" aria-label="Play a video memory from October 7">
+              <source src="photos/VID_20261007_004151_547.mp4" type="video/mp4">
+              Your browser does not support MP4 video playback.
+            </video>
+            <figcaption>a video memory from October 7</figcaption>
+          </figure>
           <figure class="gallery-card">
-            <img src="photos/IMG_20261003_005724_175.jpg" alt="A memory photo from our story">
+            <img src="photos/IMG_20261003_005724_175.jpg" alt="A memory photo from our story" loading="lazy" decoding="async">
             <figcaption>little moments</figcaption>
           </figure>
           <figure class="gallery-card">
-            <img src="photos/IMG_20260928_003549_724.jpg" alt="A memory photo from our story">
+            <img src="photos/IMG_20260928_003549_724.jpg" alt="A memory photo from our story" loading="lazy" decoding="async">
             <figcaption>when it felt right</figcaption>
           </figure>
           <figure class="gallery-card">
-            <img src="photos/IMG_20260928_003431_731.jpg" alt="A memory photo from our story">
+            <img src="photos/IMG_20260928_003431_731.jpg" alt="A memory photo from our story" loading="lazy" decoding="async">
             <figcaption>us, in a quiet time</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG_20261003_005819_200.jpg" alt="A photo she shared with me" loading="lazy" decoding="async">
+            <figcaption>a photo she shared</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG_20261007_123831_357.jpg" alt="A shared photo memory from October 7" loading="lazy" decoding="async">
+            <figcaption>a shared photo memory</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG-20261002-WA0026.jpg" alt="A shared photo memory" loading="lazy" decoding="async">
+            <figcaption>a shared photo memory</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG-20261002-WA0027.jpg" alt="A shared photo memory" loading="lazy" decoding="async">
+            <figcaption>a shared photo memory</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG-20261007-WA0008.jpg" alt="A shared photo memory from October 7" loading="lazy" decoding="async">
+            <figcaption>a shared photo memory</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="photos/IMG-20261007-WA0009.jpg" alt="A shared photo memory from October 7" loading="lazy" decoding="async">
+            <figcaption>a shared photo memory</figcaption>
           </figure>
         </div>
       </div>
