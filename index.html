@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbf6ef">
+  <meta name="theme-color" content="#100c12">
   <meta name="description" content="A little 3D love story made for Aashittu, with all my heart.">
   <title>ANKANYA ♡</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -18,13 +18,19 @@
 
   <div class="opening" id="opening" role="dialog" aria-modal="true" aria-labelledby="opening-title">
     <div class="opening-grain" aria-hidden="true"></div>
-    <span class="opening-heart" aria-hidden="true">♡</span>
-    <p class="opening-line opening-line-one">Some people enter your life quietly...</p>
-    <p class="opening-line opening-line-two">...and somehow make ordinary days feel special.</p>
-    <h1 class="opening-title" id="opening-title">For Someone Very Special <span>♡</span></h1>
-    <p class="opening-note">I made something for you.</p>
-    <button class="button button-dark opening-button" id="enterButton" type="button">Enter My Little World <span aria-hidden="true">♡</span></button>
+    <div class="opening-stars" id="openingStars" aria-hidden="true"></div>
+    <span class="opening-heart" aria-hidden="true">✦</span>
+    <p class="opening-line opening-line-one" lang="hi">कुछ कहानियाँ लिखी नहीं जातीं…</p>
+    <p class="opening-line opening-line-two" lang="hi">बस किसी ख़ास इंसान के मिलने से<br>अपने आप शुरू हो जाती हैं। ❤️</p>
+    <h1 class="opening-title" id="opening-title" lang="hi">और मेरी कहानी…<br>तुमसे मिलने के बाद शुरू हुई।</h1>
+    <p class="opening-note" lang="hi">मेरे दिल की एक छोटी-सी जगह, सिर्फ़ तुम्हारे लिए।</p>
+    <button class="button button-dark opening-button" id="enterButton" type="button" lang="hi">हमारी कहानी आगे बढ़ाएँ <span aria-hidden="true">→</span></button>
+    <p class="music-welcome-status" id="musicWelcomeStatus" role="status" aria-live="polite" hidden></p>
   </div>
+
+  <audio id="proposalMusic" preload="auto" loop>
+    <source src="assets/music/new_song.mp4" type='audio/mp4; codecs="mp4a.40.2"'>
+  </audio>
 
   <main id="main-content" aria-hidden="true" inert>
     <nav class="site-nav" aria-label="Main navigation">
@@ -197,11 +203,11 @@
         <div class="music-card" data-reveal>
           <div class="music-card-top"><span>♫ &nbsp; A SONG I REMEMBER</span><span class="music-dot" aria-hidden="true"></span></div>
           <div class="music-art" aria-hidden="true"><span class="music-orbit"></span><span class="music-note">♫</span></div>
-          <p class="music-label">YOUR FAVORITE SONG</p>
-          <h3>RAATIYAN</h3>
+          <p class="music-label">THE SONG FOR OUR STORY</p>
+          <h3>OUR MOMENT</h3>
           <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <a class="button button-light" href="https://youtu.be/GnXyV87CbeM?si=Q16hRBRwcNu7lQQd" target="_blank" rel="noopener noreferrer">Listen to Raatiyan <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-          <p class="music-disclaimer">Opens YouTube in a new tab. Nothing plays automatically.</p>
+          <button class="button button-light" id="songPlayButton" type="button" aria-pressed="false">Play our song</button>
+          <p class="music-disclaimer" id="songMusicStatus" aria-live="polite">Your song will keep playing as you explore our story.</p>
         </div>
       </div>
     </section>
@@ -561,6 +567,7 @@
         </div>
         <p class="answer-response" id="answerResponse" aria-live="polite" tabindex="-1"></p>
         <p class="privacy-note">This stays right here in this moment. Nothing is saved or sent.</p>
+        <button class="button button-dark proposal-launch" type="button" data-open-proposal lang="hi">एक और बात… <span aria-hidden="true">→</span></button>
       </div>
     </section>
 
@@ -573,6 +580,7 @@
         <p class="ending-line ending-soft" data-reveal>Two careers growing side by side.<br>Our family matters by 2031; our wedding, we hope, in 2032.</p>
         <h2 data-reveal>Here's to us, and our future. <span aria-hidden="true">♡</span></h2>
         <p class="handwriting ending-signature" data-reveal>— With all my love</p>
+        <button class="button button-dark proposal-launch ending-proposal-launch" type="button" data-open-proposal lang="hi">हमारी अगली कहानी देखें <span aria-hidden="true">→</span></button>
       </div>
       <footer class="site-footer">
         <p>Made with honesty, respect and a little bit of courage.</p>
@@ -581,7 +589,27 @@
     </section>
   </main>
 
-  <a class="music-float" href="https://youtu.be/GnXyV87CbeM?si=Q16hRBRwcNu7lQQd" target="_blank" rel="noopener noreferrer" aria-label="Open Raatiyan on YouTube in a new tab" inert>♫ <span>Raatiyan</span></a>
+  <button class="music-float" id="musicFloat" type="button" aria-label="Play your song" aria-pressed="false" inert>🔇</button>
+
+  <dialog class="proposal-experience" id="proposalExperience" aria-labelledby="film-heading">
+    <div class="film-backdrop" aria-hidden="true">
+      <img id="filmImage" alt="" fetchpriority="high">
+      <span class="film-image-error" id="filmImageError" hidden>A photo from our story will appear here.</span>
+      <span class="film-light film-light-one"></span>
+      <span class="film-light film-light-two"></span>
+      <span class="film-grain"></span>
+    </div>
+    <div class="film-topbar">
+      <div class="film-progress" id="filmProgress" aria-hidden="true"></div>
+      <button class="film-music-toggle" id="filmMusicToggle" type="button" aria-label="Play your song" aria-pressed="false">🔇</button>
+      <span class="visually-hidden" id="filmMusicStatus" aria-live="polite"></span>
+      <button class="film-close" id="closeProposal" type="button" aria-label="Close our story">×</button>
+    </div>
+    <div class="film-content" id="filmContent" aria-live="polite" aria-atomic="true"></div>
+    <div class="film-actions" id="filmActions"></div>
+    <p class="film-signoff" id="filmSignoff" hidden>Forever starts here. ♾️</p>
+    <div class="film-particles" id="filmParticles" aria-hidden="true"></div>
+  </dialog>
 
   <div class="secret-overlay" id="secretOverlay" role="dialog" aria-modal="true" aria-labelledby="secretTitle" hidden>
     <div class="secret-card">
